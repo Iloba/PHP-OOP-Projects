@@ -51,7 +51,7 @@ class FormValidator
     }
 
     public function validatePassword(){
-        
+        //Validate Password
     }
 
     private function addError($key, $value)
