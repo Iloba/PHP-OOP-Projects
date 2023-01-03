@@ -50,6 +50,10 @@ class FormValidator
         }
     }
 
+    public function validatePassword(){
+        
+    }
+
     private function addError($key, $value)
     {
         $this->errors[$key] = $value;
