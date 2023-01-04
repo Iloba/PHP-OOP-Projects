@@ -3,7 +3,7 @@ class FormValidator
 {
     private $data;
     private $errors = [];
-    private static $fields = ['username', 'email'];
+    private static $fields = ['username', 'email', 'password', 'confirm_password'];
 
     public function __construct($formData)
     {
@@ -21,6 +21,8 @@ class FormValidator
 
         $this->validateEmail();
         $this->validateUsername();
+        $this->validatePassword();
+        $this->validateConfirmPassword();
         return $this->errors;
     }
 
@@ -50,8 +52,32 @@ class FormValidator
         }
     }
 
-    public function validatePassword(){
-        //Validate Password
+    public function validatePassword()
+    {
+        $value = trim($this->data['password']);
+
+        if (empty($value)) {
+            $this->addError('password', 'Password Can not be empty');
+        } else {
+            if (strlen($value) < 8) {
+                $this->addError('password', 'Passwords is not up to 8 Chars long');
+            }
+        }
+    }
+
+    public function validateConfirmPassword()
+    {
+        $value = trim($this->data['confirm_password']);
+
+        if (empty($value)) {
+            $this->addError('confirm_password', 'Confirm Password Can not be empty');
+        } elseif (strlen($value) < 8) {
+            $this->addError('confirm_password', 'Confirm Password Must be up to 8 Characters Long');
+        } else {
+            if ($value !== $this->data['password']) {
+                $this->addError('password', 'Confirm password does not Match');
+            }
+        }
     }
 
     private function addError($key, $value)

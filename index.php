@@ -21,16 +21,32 @@
         <form action="<?php echo $_SERVER['PHP_SELF']?>" method="POST">
             <div>
                 <label for="">Username</label>
-                <input type="text" name="username" placeholder="username" value="<?php echo htmlspecialchars($_POST['username']) ?? ''?>">
+                <input type="text" name="username" placeholder="username" value="<?php echo htmlspecialchars($_POST['username'] ??  '') ?>">
                 <small class="error">
                     <?php echo $errors['username'] ?? ''?>
                 </small>
             </div>
             <div>
                 <label for="">Email</label>
-                <input type="text" name="email" placeholder="email" value="<?php echo htmlspecialchars($_POST['email']) ?? ''?>">
+                <input type="text" name="email" placeholder="email" value="<?php echo htmlspecialchars($_POST['email'] ?? '') ?>">
                 <small class="error">
                     <?php echo $errors['email'] ?? ''?>
+                </small>
+            </div>
+
+            <div>
+                <label for="">Password</label>
+                <input type="password" name="password" placeholder="password" value="<?php echo htmlspecialchars($_POST['password'] ?? '') ?>">
+                <small class="error">
+                    <?php echo $errors['password'] ?? ''?>
+                </small>
+            </div>
+
+            <div>
+                <label for="">Confirm Password</label>
+                <input type="password" name="confirm_password" placeholder="confirm password" value="<?php echo htmlspecialchars($_POST['confirm_password'] ?? '') ?>">
+                <small class="error">
+                    <?php echo $errors['confirm_password'] ?? ''?>
                 </small>
             </div>
 
