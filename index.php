@@ -5,6 +5,8 @@ require_once 'OOP Principles/PhysicalBook.php';
 require_once 'OOP Principles/DigitalBook.php';
 require_once 'OOP Principles/PlayList/playlist.php';
 require_once 'OOP Principles/PlayList/song.php';
+require_once 'OOP Principles/Encapsulation/encapsulation.php';
+require_once 'OOP Principles/Encapsulation/Product.php';
 // require('validation.php');
 // if(isset($_POST['submit'])){
 //     $validation = new FormValidator($_POST);
@@ -16,13 +18,32 @@ require_once 'OOP Principles/PlayList/song.php';
 // var_dump($DigitalBook);
 // var_dump($PhysicalBook);
 
-$playlist = new PlayList('Naija Hits');
-$song1 = new Song('Fem', 'Davido');
-$song2 = new Song('Sokoto', 'Yung John');
-$playlist->addSongs($song1);
-$playlist->addSongs($song2);
-echo $playlist->getNumberOfSongs();
-var_dump($playlist->songs);
+// $playlist = new PlayList('Naija Hits');
+// $song1 = new Song('Fem', 'Davido');
+// $song2 = new Song('Sokoto', 'Yung John');
+// $playlist->addSongs($song1);
+// $playlist->addSongs($song2);
+// echo $playlist->getNumberOfSongs();
+// var_dump($playlist->songs);
+
+//Practicing Encapsulation
+$newCart = new Cart;
+$NikeShoes = new Product('Nike Shoes', 300, 3);
+$JordanShoes = new Product('Jordan Shoes', 500, 3);
+$LvShoes = new Product('Louis Vuitton Shoes', 1000, 3);
+$LvShirt = new Product('LV Black Shirt', 200, 1);
+$newCart->addItemsToCart($NikeShoes);
+$newCart->addItemsToCart($JordanShoes);
+$newCart->addItemsToCart($LvShoes);
+$newCart->addItemsToCart($LvShirt);
+
+print $newCart->getNumberOfItemsInCart();
+var_dump($newCart->getItemsInCart()) . '<br/>'. '<br/>';
+print($newCart->getTotal());
+
+
+
+
 
 
 
